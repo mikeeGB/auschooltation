@@ -29,6 +29,9 @@
 		<div class="container">
 		    <div class="row full-height justify-content-center">
 				<div class="col-12 text-center align-self-center py-5">
+                {% if error_dict %}
+                    <p>Ошибка ввода формы, повторите</p>
+                {% endif %}
 					<div class="section pb-5 pt-5 pt-sm-2 text-center">
 						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
 			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
@@ -95,11 +98,15 @@
 			      			</div>
 			      		</div>
 			      	</div>
-		      	</div>
-                {% if error_dict %}
-                {{ error_dict.errors }}
-                {% endif %}
+                    {% if error_dict %}
+                    <div class="row full-height justify-content-center text-left">
+                            <p>
+                                {{ error_dict.errors }}
+                            </p>
+                        </div>
+                    {% endif %}
 
+		      	</div>
 	      	</div>
 	    </div>
 	</div>
