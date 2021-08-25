@@ -1,4 +1,7 @@
+{% extends 'site_description/standart_page.html' %}
 {% load static %}
+
+{% block head %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +12,20 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
     <link rel="stylesheet" href="{% static 'users/style.css' %}">
 </head>
+{% endblock head %}
 
+{% block navbar_links %}
+<!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auschool-home' %}">Home</a>
+            </li>
+        </ul>
+{% endblock navbar_links %}
 
 <body>
-    <div class="section">
+{% block content %}
+ <div class="section">
 		<div class="container">
 		    <div class="row full-height justify-content-center">
 				<div class="col-12 text-center align-self-center py-5">
@@ -75,6 +88,7 @@
 											</div>
                                                 <button class="btn mt-4" type="submit">Submit</button>
                                             </form>
+
 				      					</div>
 			      					</div>
 			      				</div>
@@ -82,8 +96,13 @@
 			      		</div>
 			      	</div>
 		      	</div>
+                {% if error_dict %}
+                {{ error_dict.errors }}
+                {% endif %}
+
 	      	</div>
 	    </div>
 	</div>
+{% endblock content %}
 </body>
 </html>
