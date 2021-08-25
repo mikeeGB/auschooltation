@@ -14,4 +14,4 @@ def register(request):
             return redirect('auschool-home')
     else:
         user_form = UserRegisterForm(request.POST)
-    return render(request, 'users/register.html', {'user_form': user_form})
+    return render(request, 'users/login_signup.html', {'user_form': user_form})
