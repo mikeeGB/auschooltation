@@ -9,3 +9,13 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User  # model to interact with by the form
         fields = ('username', 'email', 'password1', 'password2')  # fields in the form
+
+    def __init__(self, *args, **kwargs):
+        """Update widget attributes to use custom css in rendered form fields"""
+        super(UserRegisterForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'class': 'form-style', 'placeholder': 'Your Full Name',
+                                                    'maxlength': '150', 'autocomplete': 'none'})
+        self.fields['email'].widget.attrs.update({'class': 'form-style', 'placeholder': 'Your Email',
+                                                  'autocomplete': 'none'})
+        self.fields['password1'].widget.attrs.update({'class': 'form-style', 'placeholder': 'Your Password'})
+        self.fields['password2'].widget.attrs.update({'class': 'form-style', 'placeholder': 'Repeat Password'})
