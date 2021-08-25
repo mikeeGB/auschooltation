@@ -31,6 +31,9 @@
 				<div class="col-12 text-center align-self-center py-5">
                 {% if error_dict %}
                     <p>Ошибка ввода формы, повторите</p>
+{#                    <div class="row justify-content-center text-left">#}
+{#                        {{ error_dict.errors }}#}
+{#                    </div>#}
                 {% endif %}
 					<div class="section pb-5 pt-5 pt-sm-2 text-center">
 						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
@@ -99,7 +102,7 @@
 			      		</div>
 			      	</div>
                     {% if error_dict %}
-                    <div class="row full-height justify-content-center text-left">
+                    <div class="row justify-content-center text-left">
                             <p>
                                 {{ error_dict.errors }}
                             </p>
