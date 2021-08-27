@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 from .forms import UserLogInForm
 
@@ -11,7 +12,6 @@ def register_or_log_in(request):
     error_dict = {}
     # registration form
     if request.method == 'POST' and request.POST.get('submit') == 'reg':
-        print(request.POST)
         user_reg_form = UserRegisterForm(request.POST)
         if user_reg_form.is_valid():
             user_reg_form.save()  # save user to database
@@ -27,8 +27,8 @@ def register_or_log_in(request):
     if request.method == 'POST' and request.POST.get('submit') == 'log_in':
         user_log_in_form = UserLogInForm(data=request.POST)
         if user_log_in_form.is_valid():
-            username = user_log_in_form.cleaned_data.get('username')
-            password = user_log_in_form.cleaned_data.get('password')
+            username = user_log_in_form.cleaned_data.get('username')  # request.POST['username']
+            password = user_log_in_form.cleaned_data.get('password')  # request.POST['password']
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('auschool-home')  # redirect to app page
@@ -39,3 +39,8 @@ def register_or_log_in(request):
 
     return render(request, 'users/login_signup.html', {'user_reg_form': user_reg_form, 'error_dict': error_dict,
                                                        'user_log_in_form': user_log_in_form})
+
+
+@login_required
+def user_profile(request):
+    return render(request, 'users/profile.html')
