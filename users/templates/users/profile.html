@@ -1,0 +1,13 @@
+{% extends 'site_description/standart_page.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block title %}
+    <title>Profile</title>
+{% endblock title%}
+
+
+
+{% block content %}
+    <h1>Hello, {{ user.username }}</h1>
+
+{% endblock content %}
