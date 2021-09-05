@@ -12,22 +12,16 @@ class Question(models.Model):
         verbose_name = "Question"
         verbose_name_plural = "Questions"
 
-    def get_answers(self):
-        return self.answer_set.all()
-
-    def show_correct_answer(self):
-        answer_set = self.get_answers()
-        correct_answer = list(filter(lambda x: x.is_correct, answer_set))[0]
-        return str(correct_answer)
+    def get_correct_answer(self):
+        return self.answer.answer_text
 
     def __str__(self):
         return f"{self.question_text}"
 
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.OneToOneField(Question, on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=60)
-    is_correct = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Answer"
