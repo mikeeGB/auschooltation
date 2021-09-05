@@ -1,9 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Questions(models.Model):
-    section = models.ForeignKey('Sections', default='Section', on_delete=models.SET_DEFAULT)
+class Question(models.Model):
+    section = models.ForeignKey('Section', default='Section', on_delete=models.SET_DEFAULT)
     question_text = models.TextField()
     question_audio = models.FileField(upload_to='question_audio')
 
@@ -11,23 +12,32 @@ class Questions(models.Model):
         verbose_name = "Question"
         verbose_name_plural = "Questions"
 
+    def get_answers(self):
+        return self.answer_set.all()
+
+    def show_correct_answer(self):
+        answer_set = self.get_answers()
+        correct_answer = list(filter(lambda x: x.is_correct, answer_set))[0]
+        return str(correct_answer)
+
     def __str__(self):
-        return f"Question: {self.question_text}"
+        return f"{self.question_text}"
 
 
-class Answers(models.Model):
-    question = models.OneToOneField(Questions, on_delete=models.CASCADE)
+class Answer(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=60)
+    is_correct = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Answer"
         verbose_name_plural = "Answers"
 
     def __str__(self):
-        return f"Answer: {self.answer_text}"
+        return f"{self.answer_text}"
 
 
-class Sections(models.Model):
+class Section(models.Model):
     section_name = models.CharField(max_length=15)
 
     class Meta:
@@ -35,4 +45,17 @@ class Sections(models.Model):
         verbose_name_plural = "Sections"
 
     def __str__(self):
-        return f"Section: {self.section_name}"
+        return f"{self.section_name}"
+
+
+class UserAnswer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user_answer = models.CharField(max_length=60)
+
+    class Meta:
+        verbose_name = "User answer"
+        verbose_name_plural = "User answers"
+
+    def __str__(self):
+        return f"{self.user.username} {self.user_answer}"
