@@ -1,0 +1,22 @@
+{% extends 'site_description/standart_page.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block title %}
+    <title>Quiz</title>
+{% endblock title%}
+
+
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h3>{{ question.question_text }}</h3>
+         <audio
+            controls
+            src="{{ question.question_audio.url }}">
+        </audio>
+
+        <h3>{{ q3_form.ht_q3_options }}</h3>
+    <button class="btn mt-4" type="submit" name="submit" value="reg">Submit</button>
+    </form>
+{% endblock content %}
