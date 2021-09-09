@@ -1,22 +1,55 @@
 {% extends 'site_description/standart_page.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-{% block title %}
-    <title>Quiz</title>
-{% endblock title%}
 
+{% block head %}
+<head>
+    {% block title %}
+    <title>Heart tones</title>
+    {% endblock title %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="{% static 'quiz/css/q_forms.css' %}" rel="stylesheet" />
+</head>
+{% endblock head %}
 
 
 {% block content %}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#        <h3>{{ question.question_text }}</h3>#}
+{#         <audio#}
+{#            controls#}
+{#            src="{{ question.question_audio.url }}">#}
+{#        </audio>#}
+{##}
+{#        <h3>{{ q1_form.ht_q1_options }}</h3>#}
+{#    <button class="btn mt-4" type="submit" name="submit" value="reg">Submit</button>#}
+{#    </form>#}
+
     <form method="post">
         {% csrf_token %}
-        <h3>{{ question.question_text }}</h3>
-         <audio
-            controls
-            src="{{ question.question_audio.url }}">
-        </audio>
+            <div class="text-center">
+                <h5>{{ question.question_text }}</h5>
+                <audio
+                    controls
+                    src="{{ question.question_audio.url }}">
+                </audio>
 
-        <h3>{{ q1_form.ht_q1_options }}</h3>
+            </div>
+            {% for radio in q1_form.ht_q1_options %}
+                <div class="radiobtn">
+                    {{ radio.tag }}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                </div>
+            {% endfor %}
     <button class="btn mt-4" type="submit" name="submit" value="reg">Submit</button>
     </form>
 {% endblock content %}
