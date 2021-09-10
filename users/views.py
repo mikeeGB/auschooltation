@@ -31,7 +31,7 @@ def register_or_log_in(request):
             password = user_log_in_form.cleaned_data.get('password')  # request.POST['password']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('heart_tones_q1')  # redirect to app page
+            return redirect('courses')  # redirect to app page
         else:
             error_dict['log_in_errors'] = user_log_in_form.errors
     else:
