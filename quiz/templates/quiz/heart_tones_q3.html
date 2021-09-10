@@ -1,22 +1,22 @@
-{% extends 'site_description/standart_page.html' %}
-<!DOCTYPE html>
-<html lang="en">
-{% block title %}
-    <title>Quiz</title>
-{% endblock title%}
-
-
+{% extends 'quiz/heart_tones_q1.html' %}
 
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <h3>{{ question.question_text }}</h3>
-         <audio
-            controls
-            src="{{ question.question_audio.url }}">
-        </audio>
+            <div class="text-center my-3">
+                <h5>{{ question.question_text }}</h5>
+                <audio
+                    controls
+                    src="{{ question.question_audio.url }}">
+                </audio>
 
-        <h3>{{ q3_form.ht_q3_options }}</h3>
-    <button class="btn mt-4" type="submit" name="submit" value="reg">Submit</button>
+            </div>
+            {% for radio in q3_form.ht_q3_options %}
+                <div class="radiobtn">
+                    {{ radio.tag }}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                </div>
+            {% endfor %}
+    <button type="submit" class="btn btn-outline-success float-lg-right my-2">Next</button>
     </form>
 {% endblock content %}

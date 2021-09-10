@@ -22,21 +22,9 @@
 
 
 {% block content %}
-{#    <form method="post">#}
-{#        {% csrf_token %}#}
-{#        <h3>{{ question.question_text }}</h3>#}
-{#         <audio#}
-{#            controls#}
-{#            src="{{ question.question_audio.url }}">#}
-{#        </audio>#}
-{##}
-{#        <h3>{{ q1_form.ht_q1_options }}</h3>#}
-{#    <button class="btn mt-4" type="submit" name="submit" value="reg">Submit</button>#}
-{#    </form>#}
-
     <form method="post">
         {% csrf_token %}
-            <div class="text-center">
+            <div class="text-center my-3">
                 <h5>{{ question.question_text }}</h5>
                 <audio
                     controls
@@ -50,6 +38,6 @@
                     <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
                 </div>
             {% endfor %}
-    <button class="btn mt-4" type="submit" name="submit" value="reg">Submit</button>
+    <button type="submit" class="btn btn-outline-success float-lg-right my-2">Next</button>
     </form>
 {% endblock content %}
