@@ -32,6 +32,7 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
 
                         {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'courses' %}">Курсы</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Мой профиль</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Выйти</a></li>
                         {% else %}

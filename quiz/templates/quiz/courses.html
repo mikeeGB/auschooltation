@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+     <title>Auschooltation courses</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'site_description/assets/logo_round_hq_text.ico' %}" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+
+
+
+
+.main {
+    margin-top: 5%;
+    margin-left: 30%; /* Same as the width of the sidenav */
+    margin-right: 30%;
+    font-size: 50px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.border-style-solid{
+    margin: 0 auto;
+	border: 5px solid #171616; /* Толщина, стильи цвет рамки */
+	padding: 50px 0px 30px 10px; /* Отсступ от рамки */
+}
+
+a.change-text{
+    width: 500px;
+    padding-top: 45px;
+    padding-left: 20px;
+    color: #171616;
+
+}
+
+a.change-text:hover{
+    color: #00757b;
+}
+
+
+
+.btn {
+	font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #71B698;
+}
+
+.btn-xl {
+    padding: 1.25rem 2.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10rem;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: #00757b;
+}
+
+.left-block{
+    text-align: center;
+    padding-top: 150px;
+    font-size: 75px;
+}
+
+.ul-position{
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+}
+
+.ul-position li{
+    display: inline;
+	margin-right: 150px;
+	padding: 5px;
+}
+
+</style>
+</head>
+<body>
+
+{% block navbar %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'auschool-home' %}">Auschooltation</a>
+
+    {% block navbar_links %}
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auschool-home' %}">Главная</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Мой профиль</a>
+                </li>
+
+                <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registration_and_login' %}">Войти</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registration_and_login' %}">Регистрация</a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endblock navbar_links %}
+</nav>
+{% endblock navbar %}
+<br>
+
+
+<div class="container">
+
+</div>
+
+
+<div class="left-block">
+    <p>Курсы</p>
+</div>
+
+<div class="main">
+
+    <div class="border-style-solid">
+        <ul class="ul-position">
+            <li><a class="change-text" href={% url 'heart_tones_q1' %}>Тоны сердца</a></li>
+            <li><a class="btn btn-primary btn-xl" href={% url 'heart_tones_q1' %}>Выбрать</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+</body>
+</html>

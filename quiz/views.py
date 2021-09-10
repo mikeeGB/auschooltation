@@ -50,3 +50,7 @@ def heart_tones_question_3(request):
     else:
         q3_form = QuestionFormHT3()
     return render(request, 'quiz/heart_tones_q3.html', {'q3_form': q3_form, 'question': question})
+
+
+def courses_page(request):
+    return render(request, 'quiz/courses.html')
