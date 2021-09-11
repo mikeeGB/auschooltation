@@ -33,12 +33,14 @@
                 </audio>
 
             </div>
-            {% for radio in q1_form.ht_q1_options %}
+        {% block q_form_options %}
+            {% for radio in q1_form.options %}
                 <div class="radiobtn">
                     {{ radio.tag }}
                     <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
                 </div>
             {% endfor %}
+        {% endblock q_form_options %}
     <button type="submit" class="btn btn-outline-success float-lg-right my-2">Next</button>
     </form>
 {% endblock content %}

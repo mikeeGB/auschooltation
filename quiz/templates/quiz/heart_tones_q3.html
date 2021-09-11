@@ -1,22 +1,10 @@
 {% extends 'quiz/heart_tones_q1.html' %}
 
-{% block content %}
-    <form method="post">
-        {% csrf_token %}
-            <div class="text-center my-3">
-                <h5>{{ question.question_text }}</h5>
-                <audio
-                    controls
-                    src="{{ question.question_audio.url }}">
-                </audio>
-
-            </div>
-            {% for radio in q3_form.ht_q3_options %}
-                <div class="radiobtn">
-                    {{ radio.tag }}
-                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
-                </div>
-            {% endfor %}
-    <button type="submit" class="btn btn-outline-success float-lg-right my-2">Next</button>
-    </form>
-{% endblock content %}
+{% block q_form_options %}
+    {% for radio in q3_form.options %}
+        <div class="radiobtn">
+            {{ radio.tag }}
+            <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+        </div>
+    {% endfor %}
+{% endblock q_form_options %}
