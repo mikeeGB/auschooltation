@@ -6,3 +6,10 @@ from quiz.models import UserAnswer
 class UserProfileStat(models.Model):
     user_answer = models.ForeignKey(UserAnswer, on_delete=models.CASCADE)
     is_correct_answer = models.BooleanField()
+
+    class Meta:
+        verbose_name = "User Profile"
+        verbose_name_plural = "User Profiles"
+
+    def __str__(self):
+        return f"{self.user_answer} - {self.is_correct_answer}"
