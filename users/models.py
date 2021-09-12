@@ -6,4 +6,3 @@ from quiz.models import UserAnswer
 class UserProfileStat(models.Model):
     user_answer = models.ForeignKey(UserAnswer, on_delete=models.CASCADE)
     is_correct_answer = models.BooleanField()
-    answer_number = models.IntegerField()
