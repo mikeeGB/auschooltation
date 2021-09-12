@@ -23,6 +23,11 @@ def process_view(request, question_num: int, heart_tone_choice: list, redirect_p
 
 
 def add_to_user_profile(user_answer_rec):
+    """
+    Function for checking answers correctness and saving them in UserProfileStat model
+    :param user_answer_rec: user_answer record in database
+    :return: None
+    """
     if user_answer_rec.user_answer == user_answer_rec.question.get_correct_answer():
         user_profile = UserProfileStat(user_answer=user_answer_rec, is_correct_answer=True)
         user_profile.save()
