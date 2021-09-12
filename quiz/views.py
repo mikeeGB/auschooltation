@@ -1,26 +1,9 @@
-from django.shortcuts import render, redirect
-from .forms import QuestionForm
-from .models import UserAnswer, Question
+from django.shortcuts import render
 from .question_options import heart_tones_questions
 from quiz.helper_functions.process_views import process_view
 
 
 # Create your views here.
-
-# def heart_tones_question_1(request):
-#     question = Question.objects.get(id=1)
-#     if request.method == 'POST':
-#         print(request.POST)
-#         q1_form = QuestionForm(heart_tones_questions.HEART_TONE_1_CHOICES, request.POST)
-#         if q1_form.is_valid():
-#             current_user = request.user
-#             answer = q1_form.cleaned_data['options']
-#             ua = UserAnswer(user=current_user, question=question, user_answer=answer)
-#             ua.save()
-#             return redirect('heart_tones_q2')
-#     else:
-#         q1_form = QuestionForm(heart_tones_questions.HEART_TONE_1_CHOICES)
-#     return render(request, 'quiz/heart_tones_q1.html', {'q1_form': q1_form, 'question': question})
 
 def heart_tones_question_1(request):
     res = process_view(request=request, question_num=1, heart_tone_choice=heart_tones_questions.HEART_TONE_1_CHOICES,
