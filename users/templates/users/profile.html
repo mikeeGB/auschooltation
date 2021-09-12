@@ -10,4 +10,11 @@
 {% block content %}
     <h1>Hello, {{ user.username }}</h1>
 
+    {% for rec in profile_data %}
+        <p>{{ rec.user_answer }}</p>
+    {% endfor %}
+
+    <h3>Всего ответов: {{ answers_len }}</h3>
+    <h3>Правильных ответов: {{ correct_answers_len }}</h3>
+
 {% endblock content %}
