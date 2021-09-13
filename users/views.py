@@ -49,8 +49,5 @@ def user_profile(request):
     profile_data = UserProfileStat.objects.filter(user_answer__user=current_user)
     answers_len, correct_answers_len = correct_answers_number(profile_data_query=profile_data)
     success_percentage = round(100 * correct_answers_len / answers_len)
-    context = {'profile_data': profile_data,
-               'success_percentage': success_percentage,
-               'answers_len': answers_len,
-               'correct_answers_len': correct_answers_len}
+    context = {'success_percentage': success_percentage}
     return render(request, 'users/profile.html', context)
