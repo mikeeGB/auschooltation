@@ -47,7 +47,11 @@ def register_or_log_in(request):
 def user_profile(request):
     current_user = request.user
     profile_data = UserProfileStat.objects.filter(user_answer__user=current_user)
-    answers_len, correct_answers_len = correct_answers_number(profile_data_query=profile_data)
-    success_percentage = round(100 * correct_answers_len / answers_len)
+    if profile_data:
+        # if there is data in profile_stats
+        answers_len, correct_answers_len = correct_answers_number(profile_data_query=profile_data)
+        success_percentage = round(100 * correct_answers_len / answers_len)
+    else:
+        success_percentage = 0
     context = {'success_percentage': success_percentage}
     return render(request, 'users/profile.html', context)
