@@ -8,8 +8,8 @@ class UserProfileStat(models.Model):
     is_correct_answer = models.BooleanField()
 
     class Meta:
-        verbose_name = "User Profile"
-        verbose_name_plural = "User Profiles"
+        verbose_name = "User Profile Answer"
+        verbose_name_plural = "User Profile Answers"
 
     def __str__(self):
         return f"{self.user_answer} - {self.is_correct_answer}"
