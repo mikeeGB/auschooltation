@@ -11,28 +11,23 @@ img{
   transition:0.5s;
   cursor:pointer;
 }
-.item-card-title{  
+.item-card-title{
   font-size:15px;
   transition:1s;
   cursor:pointer;
 }
-.item-card-title i{  
-  font-size:15px;
-  transition:1s;
-  cursor:pointer;
-  color:#ffa710
-}
-.card-title i:hover{
-  transform: scale(1.25) rotate(100deg); 
-  color:#18d4ca;
-  
-}
+
+
 .card:hover{
   transform: scale(1.05);
   box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
 }
 .card-text{
-  height:80px;  
+  height:80px;
+}
+
+.bg-card{
+  background: #34767B;
 }
 
 .card::before, .card::after {
