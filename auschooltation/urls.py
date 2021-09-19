@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
+from lessons import views as lesson_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('profile/', user_views.user_profile, name='profile'),
     path('quiz/', include('quiz.urls')),
     path('lessons/', include('lessons.urls')),
+    path('theory/', lesson_views.theory_choose, name='theory'),
 ]
 
 if settings.DEBUG:
