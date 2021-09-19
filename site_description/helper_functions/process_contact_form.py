@@ -1,13 +1,12 @@
 import requests
-from auschooltation.configuration.project_configuration import API_LINK
+from auschooltation.configuration.project_configuration import API_LINK, id_dict
 
 
 def process_form_tg(contact_form):
-    updates = requests.get(API_LINK + "/getUpdates?offset=-1").json()
-    message = updates["result"][0]["message"]
-    chat_id = message["from"]["id"]
     text = parse_form_text(contact_form)
-    requests.get(API_LINK + f"/sendMessage?chat_id={chat_id}&text={text}")
+    #%2B - '+' encoding
+    for chat_id in id_dict.values():
+        requests.post(API_LINK + f"/sendMessage?chat_id={chat_id}&text={text}")
 
 
 def parse_form_text(contact_form):
