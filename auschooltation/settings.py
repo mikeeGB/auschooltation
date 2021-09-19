@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'lessons.apps.LessonsConfig',
     'quiz.apps.QuizConfig',
     'site_description.apps.SiteDescriptionConfig',
     'users.apps.UsersConfig',
