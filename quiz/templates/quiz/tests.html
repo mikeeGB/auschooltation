@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     {% block title %}
-    <title>Courses</title>
+    <title>Testing</title>
     {% endblock title %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +34,7 @@
             {% if user.is_authenticated %}
                  <!-- Dropdown -->
                         <a class="dropdown-item" href="{% url 'profile' %}">Мой профиль</a>
-                        <a class="dropdown-item" href="{% url 'courses' %}">Курсы</a>
+                        <a class="dropdown-item" href="{% url 'tests' %}">Тесты</a>
                         <a class="dropdown-item" href="{% url 'theory' %}">Теория</a>
                         <a class="dropdown-item" href="{% url 'logout' %}">Выйти из аккаунта</a>
             {% else %}

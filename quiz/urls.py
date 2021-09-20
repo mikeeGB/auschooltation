@@ -12,6 +12,6 @@ urlpatterns = [
     path('heart_tones/q8', heart_tones_question_8, name='heart_tones_q8'),
     path('heart_tones/q9', heart_tones_question_9, name='heart_tones_q9'),
     path('heart_tones/q10', heart_tones_question_10, name='heart_tones_q10'),
-    path('courses/', courses_page, name='courses'),
+    path('tests/', tests_page, name='tests'),
 
 ]

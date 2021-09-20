@@ -77,5 +77,5 @@ def heart_tones_question_10(request):
 
 
 @login_required
-def courses_page(request):
-    return render(request, 'quiz/courses.html')
+def tests_page(request):
+    return render(request, 'quiz/tests.html')

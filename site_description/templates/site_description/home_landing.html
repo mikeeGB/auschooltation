@@ -42,7 +42,7 @@
             {% if user.is_authenticated %}
                  <!-- Dropdown -->
                         <a class="dropdown-item" href="{% url 'profile' %}">Мой профиль</a>
-                        <a class="dropdown-item" href="#courses">Курсы</a>
+                        <a class="dropdown-item" href="#tests">Тесты</a>
                         <a class="dropdown-item" href="{% url 'theory' %}">Теория</a>
                         <a class="dropdown-item" href="#contact">Контакты</a>
                         <a class="dropdown-item" href="{% url 'logout' %}">Выйти из аккаунта</a>
@@ -50,7 +50,7 @@
                 <!-- Dropdown -->
                         <a class="dropdown-item" href="{% url 'registration_and_login' %}">Войти</a>
                         <a class="dropdown-item" href="{% url 'registration_and_login' %}">Регистрация</a>
-                        <a class="dropdown-item" href="#courses">Курсы</a>
+                        <a class="dropdown-item" href="#tests">Тесты</a>
                         <a class="dropdown-item" href="#contact">Контакты</a>
             {% endif %}
                 </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 mb-5">Auschooltation - приложение, призванное помочь студентам медицинских вузов освоить искусство аускультации, а врачам на высоком уровне поддерживать этот важнейший диагностический навык</p>
-                        <a class="btn btn-primary btn-xl" href="#courses">Подробнее</a>
+                        <a class="btn btn-primary btn-xl" href="#tests">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
 
     {% block content %}
         <!-- About-->
-        <section class="page-section bg-primary" id="courses">
+        <section class="page-section bg-primary" id="tests">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8 text-center">
@@ -89,9 +89,9 @@
                         <hr class="divider divider-light" />
                         <p class="text-white-75 mb-4">Осваивай аускультацию в игровой форме. Прослушивай аускультативные феномены и выбирай варианты диагноза. Становись экспертом вместе с нашим приложением!</p>
                         {% if user.is_authenticated %}
-                            <a class="btn btn-light btn-xl" href="{% url 'courses' %}">Выбрать курсы!</a>
+                            <a class="btn btn-light btn-xl" href="{% url 'tests' %}">Проверить себя!</a>
                         {% else %}
-                            <a class="btn btn-light btn-xl" href="{% url 'registration_and_login' %}">Выбрать курсы!</a>
+                            <a class="btn btn-light btn-xl" href="{% url 'registration_and_login' %}">Проверить себя!</a>
                         {% endif %}
                     </div>
                 </div>
